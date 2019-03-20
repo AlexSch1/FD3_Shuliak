@@ -1,4 +1,4 @@
-let books = [
+const books = [
     {
         "id": 0,
         "title": "Происхождение",
@@ -173,10 +173,8 @@ let books = [
         "price": 39,
         "rating": 5
     }
-]
-
+];
 
 let titleTable = 'Список книг';
-
 
 ReactDOM.render(React.createElement(Books, {books, titleTable: titleTable}), document.getElementById('root'));

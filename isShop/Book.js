@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 let Books = React.createClass({
     displayName: 'Books component',
 
@@ -19,7 +11,6 @@ let Books = React.createClass({
     },
 
     render: function() {
-        console.log(this.props)
         const { books, titleTable } = this.props;
 
         let list = books.map((book) => {
