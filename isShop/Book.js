@@ -25,9 +25,9 @@ let Books = React.createClass({
             )
         });
 
-        return React.createElement('div', {className:'inner'}, 
-            React.createElement('h1', {className:'inner__title'}, titleTable),
-            React.createElement('div', {className:'inner__list'}, list),
+        return React.DOM.div({className:'inner'}, 
+            React.DOM.h1({ className:'inner__title' }, titleTable),
+            React.DOM.div({ className:'inner__list' }, list),
         );
     }
 })
