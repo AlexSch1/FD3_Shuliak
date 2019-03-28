@@ -14,11 +14,15 @@ let itemBook = React.createClass({
     },
 
     onSelect: function(e) {
+        console.log(this.props.book.id)
+
         if (e.target.tagName === 'BUTTON') return;
 
-        this.setState((prev, st)=>({
-            select: !prev.select
-        }));
+        this.props.onClick(this.props.book.id);
+
+        // this.setState((prev, st)=>({
+        //     select: !prev.select
+        // }));
     },
 
     onDeleteItem: function() {
@@ -32,23 +36,9 @@ let itemBook = React.createClass({
     },
 
     render: function() {
-        // Вопрос в следующем,
-            // есть задача - закрасить div
-                // решение - поставить ему класс у которого задается фон
 
-        // как в таких случая делать? когда  мне нужно поставить класс элементу 
-        // в зависимости от (к примеру) этого показателя this.state.select true/false
-        // т.е сейчас я в className передаю пустую строку, делая перед этим проверку this.state.select
-        //  если this.state.select равен false то пустая строка
-        // а если this.state.select равен true то передаю строку с нужным мне классом
-        // 
-        // Есть ли какие то более красивые методы что бы это сделать? и так ли это вообще делается?
-        // 
-        // И как происходит смена классов у элемента? т.е в классическом случаи делается toggleClass,
-        // какая делается toggleClass/addClass/removeClass в React?
-        // 
         let select = '';
-        if (this.state.select) {
+        if (this.props.book.id === this.props.selectedItem ) {
             select = 'select'
         }
         
@@ -78,11 +68,24 @@ let Books = React.createClass({
         return { titleTable: 'Какой-то список'}
     },
 
+    onSelectItem: function(value) {
+        this.setState({
+            selectedItem: value
+        });
+    },
+
+    getInitialState: function() {
+        return {
+            selectedItem: false
+        }
+    },
+
     render: function() {
         const { books, titleTable } = this.props;
+        let selectedItem = this.state.selectedItem;
 
         let list = books.map((book) => {
-            return React.createElement(itemBook, { key:book.id, book }, null);
+            return React.createElement(itemBook, { key:book.id, book, selectedItem, onClick:this.onSelectItem }, null);
         });
 
         return React.DOM.div({className:'inner'}, 
@@ -93,12 +96,4 @@ let Books = React.createClass({
 })
 
 
-// Была еще идею сделать немного по другому
-//  т.е хранить состояние в компоненте Books, в его state хранился бы массив с объектами и
-// когда удалялся бы item , то брался бы его id и в массиве который лежал бы в state компонента Books,  искался бы этот item(объект) c нужным id полученным при клике,
-// и добавлялся бы ему какой то показатель (к примеру - delete: true)
-// и при атрисовки у этих объектов проверялось бы свойсто  delete: true/false
-
-// по итогу, какой метод более правильный? тот которым сейчас сделано или тот которые описан выше?
-// 
 
