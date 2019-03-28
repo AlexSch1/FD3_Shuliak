@@ -1,61 +1,3 @@
-
-let itemBook = React.createClass({
-    displayName: 'itemList',
-
-    getInitialState: function() {
-        return {
-            select: false,
-            deleted: false
-        }
-    },
-
-    propTypes: {
-        book: React.PropTypes.object
-    },
-
-    onSelect: function(e) {
-        console.log(this.props.book.id)
-
-        if (e.target.tagName === 'BUTTON') return;
-
-        this.props.onClick(this.props.book.id);
-
-        // this.setState((prev, st)=>({
-        //     select: !prev.select
-        // }));
-    },
-
-    onDeleteItem: function() {
-        let answer = confirm('Удалить?');
-        
-        if (answer) {
-            this.setState({
-                deleted: true
-            });
-        }
-    },
-
-    render: function() {
-
-        let select = '';
-        if (this.props.book.id === this.props.selectedItem ) {
-            select = 'select'
-        }
-        
-        if (!this.state.deleted) {
-            return React.DOM.a({ className: `item ${select}`, onClick: this.onSelect },
-                React.DOM.h4({ className:'title' }, this.props.book.title),
-                React.DOM.p({ className:'author' }, this.props.book.author),
-                React.DOM.h4({ className:'title' }, `${this.props.book.price} руб.`),
-                React.DOM.button({ onClick: this.onDeleteItem }, 'Удалить'));
-        } else {
-            return null;
-        }
-        
-    }
-});
-
-
 let Books = React.createClass({
     displayName: 'Books component',
 
@@ -64,33 +6,55 @@ let Books = React.createClass({
         books: React.PropTypes.array
     },
 
-    getDefaultProps: function() {
-        return { titleTable: 'Какой-то список'}
+    getDefaultProps: function () {
+        return { titleTable: 'Какой-то список' }
     },
 
-    onSelectItem: function(value) {
-        this.setState({
-            selectedItem: value
-        });
-    },
-
-    getInitialState: function() {
+    getInitialState: function () {
         return {
-            selectedItem: false
+            selectedItem: false,
+            booksList: this.props.books
         }
     },
 
-    render: function() {
-        const { books, titleTable } = this.props;
+    onSelectItem: function (value) {
+        this.setState((prev, next) => ({
+            selectedItem: prev.selectedItem === value ? false : value
+        }))
+    },
+
+    onDelete: function (value) {
+        let answer = confirm('Удалить?');
+        if (!answer) return;
+
+        let newList = this.state.booksList.filter((v) => {
+            return v.id !== value;
+        });
+        
+        this.setState({
+            booksList: newList
+        })
+    },
+
+    render: function () {
+        const { titleTable } = this.props;
+        const booksList = this.state.booksList
         let selectedItem = this.state.selectedItem;
 
-        let list = books.map((book) => {
-            return React.createElement(itemBook, { key:book.id, book, selectedItem, onClick:this.onSelectItem }, null);
+        let list = booksList.map((book) => {
+            return React.createElement(ItemBook, 
+                { 
+                    key: book.id, 
+                    book, 
+                    selectedItem, 
+                    onClick: this.onSelectItem, 
+                    onDelete: this.onDelete 
+                }, null);
         });
 
-        return React.DOM.div({className:'inner'}, 
-            React.DOM.h1({ className:'inner__title' }, titleTable),
-            React.DOM.div({ className:'inner__list' }, list),
+        return React.DOM.div({ className: 'inner' },
+            React.DOM.h1({ className: 'inner__title' }, titleTable),
+            React.DOM.div({ className: 'inner__list' }, list),
         );
     }
 })
