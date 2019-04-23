@@ -1,0 +1,29 @@
+[
+    {
+        "id": 23,
+        "title": "Атлант расправил плечи",
+        "author": "Айн Рэнд",
+        "image":
+            "https://cv9.litres.ru/sbc/32011296_cover_185-elektronnaya-kniga-ayn-rend-atlant-raspravil-plechi.jpg",
+        "price": 17,
+        "rating": 2
+    },
+    {
+        "id": 5,
+        "title": "1984",
+        "author": "Джордж Оруэлл",
+        "image":
+            "https://cv0.litres.ru/sbc/09233908_cover_185-elektronnaya-kniga--.jpg",
+        "price": 15,
+        "rating": 5
+    },
+    {
+        "id": 1,
+        "title": "Девушка в тумане",
+        "author": "Донато Карризи",
+        "image":
+            "https://cv2.litres.ru/sbc/31635724_cover_185-elektronnaya-kniga-donato-karrizi-devushka-v-tumane.jpg",
+        "price": 44,
+        "rating": 4
+    }
+]

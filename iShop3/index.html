@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        outline: 1px solid #ccc;
+    }
+    * {
+        margin: 0;
+    }
+    .inner__list {
+        width: 100%;
+        text-align: center;
+        margin: 0 auto;
+    }
+    img {
+        display: block;
+    }
+    .wr_i {
+        display: flex;
+    }
+    .item {
+        width: 700px;
+        padding: 0;
+        margin: 0 auto;
+        border: 1px solid burlywood;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-content: flex-start;
+        /* flex: auto; */
+        cursor: pointer;
+        height: 90px;
+    }
+    .item * {
+        flex: 1;
+        outline: 1px solid;
+        height: 100%;
+    }
+    .inner__title {
+        text-align: center;
+    }
+    .item button {
+        /* background-color: #ccc; */
+        /* border: none; */
+        cursor: pointer;
+        /* height: 40px; */
+        display: block;
+        align-self: center;
+        /* opacity: 0.5; */
+        width: auto;
+        flex: 0;
+        /* transition: all .4s ease; */
+    }
+
+    .select {
+        background-color: #349634;
+    }
+    .edit {
+        background-color: #e83636;
+    }
+</style>
+
+<body>
+    <div id="root"></div>
+    <script src="bundle.js"></script>
+
+</body>
+
+</html>
