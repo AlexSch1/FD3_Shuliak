@@ -2,16 +2,16 @@ import React from 'react';
 
 
 export default function RainbowFrame(props) {
+    let txt = props.children;
 
-    let wrapper = props.colors.map((v, k) => {
-        return <div key={k} style={{ border: `5px solid ${v}` }}></div>
+    props.colors.forEach((v, k) => {
+        txt = <div key={k} style={{ border: `5px solid ${v}` }}>{txt}</div>
     });
 
 
     return (
         <div>
-            {props.children}
-            {wrapper}
+            {txt}
         </div>
     )
 }

@@ -8,7 +8,7 @@ export default function BR2JSX (props) {
     txt.forEach((v,k) => {
         list.push(v);
         if ((txt.length - 1) !== k) {
-            list.push(<br/>);
+            list.push(<br key={k}/>);
         }
     });
     
