@@ -1,0 +1,56 @@
+body {
+    font-family: Arial;
+}
+.list_item {
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.185);
+}
+.list_item div {
+    width: 150px;
+    padding: 10px;
+    border-right: 1px solid rgba(0, 0, 0, .2);
+}
+.header div {
+    font-weight: bold;
+}
+.list_item div:last-child {
+    border-right: none;
+}
+.status_active {
+    background-color: rgba(30, 172, 91, 0.527);
+}
+.status_block {
+    background-color: rgba(231, 42, 42, 0.527);
+}
+.filters {
+    margin-bottom: 15px;
+}
+.filters p {
+    margin: 0;
+}
+.filters label{
+    border: 1px solid rgba(0, 0, 0, .2);
+    margin: 10px;
+}
+.company {
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+.company input {
+    font-size: 17px;
+}
+.edit_card,
+.save_card {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, .2);
+    width: 250px;
+}
+.edit_card label,
+.save_card label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.new_client {
+    margin-top: 20px;
+}
