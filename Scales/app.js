@@ -1,4 +1,3 @@
-// type Prod = { name: string, price: number, scale: number };
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||

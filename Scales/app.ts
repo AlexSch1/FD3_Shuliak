@@ -1,13 +1,8 @@
 
-
-
-
-// type Prod = { name: string, price: number, scale: number };
-
 class Scales {
-    protected products: Array<any> = [];
+    protected products: Array<Product> = [];
 
-    public add(...prod: Array<object>): void {
+    public add(...prod: Array<Product>): void {
         prod.forEach((value)=>{
             this.products.push(value);
         })
@@ -15,7 +10,7 @@ class Scales {
 
     public getSumScale(): void {
         let sum: number = 0;
-        this.products.forEach((prod) => {
+        this.products.forEach((prod: Product) => {
             sum += prod.scale;
         });
         console.log(sum);
@@ -23,7 +18,7 @@ class Scales {
 
     public getNameList(): void {
         let nam: string[] = [];
-        this.products.forEach((prod) => {
+        this.products.forEach((prod: Product) => {
             nam.push(prod.name);
         });
         console.log(nam);
@@ -32,7 +27,7 @@ class Scales {
 
 
 class Product {
-    constructor(protected name: string, protected price: number, protected scale: number) {
+    constructor(public name: string, public price: number, public scale: number) {
     }
 
     public getScale():void {
