@@ -8,20 +8,20 @@ class Scales {
         })
     }
 
-    public getSumScale(): void {
+    public getSumScale(): number {
         let sum: number = 0;
         this.products.forEach((prod: Product) => {
             sum += prod.scale;
         });
-        console.log(sum);
+        return sum;
     }
 
-    public getNameList(): void {
+    public getNameList(): string[] {
         let nam: string[] = [];
         this.products.forEach((prod: Product) => {
             nam.push(prod.name);
         });
-        console.log(nam);
+        return nam;
     }
 }
 
@@ -30,11 +30,11 @@ class Product {
     constructor(public name: string, public price: number, public scale: number) {
     }
 
-    public getScale():void {
-        console.log(this.scale);
+    public getScale():number {
+        return this.scale
     }
-    public getName():void {
-        console.log(this.name);
+    public getName():string {
+        return this.name;
     }
 }
 

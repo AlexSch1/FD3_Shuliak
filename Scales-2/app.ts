@@ -13,20 +13,20 @@ class Scales2 {
         })
     }
 
-    public getSumScale(): void {
+    public getSumScale(): number {
         let sum: number = 0;
         this.products.forEach((prod: IScalable) => {
             sum += prod.getScale();
         });
-        console.log(sum);
+        return sum;
     }
 
-    public getNameList(): void {
+    public getNameList(): string[] {
         let nam: string[] = [];
         this.products.forEach((prod: IScalable) => {
             nam.push(prod.getName());
         });
-        console.log(nam);
+        return nam
     }
 }
 
